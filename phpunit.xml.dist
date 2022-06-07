@@ -14,16 +14,16 @@
     executionOrder="random"
     failOnWarning="true"
     failOnRisky="true"
-    failOnEmptyTestSuite="true"
     beStrictAboutOutputDuringTests="true"
     verbose="true"
 >
+    <!-- failOnEmptyTestSuite="true" -->
     <testsuites>
-        <testsuite name="VendorName Test Suite">
+        <testsuite name="Hellomayaagency Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-    <coverage>
+    <!-- <coverage>
         <include>
             <directory suffix=".php">./src</directory>
         </include>
@@ -32,8 +32,8 @@
             <text outputFile="build/coverage.txt"/>
             <clover outputFile="build/logs/clover.xml"/>
         </report>
-    </coverage>
-    <logging>
+    </coverage> -->
+    <!-- <logging>
         <junit outputFile="build/report.junit.xml"/>
-    </logging>
+    </logging> -->
 </phpunit>
