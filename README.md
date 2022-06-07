@@ -18,7 +18,7 @@ You can install the package via composer:
 composer require hellomayaagency/laravel-webhooks
 ```
 
-You can publish and run the migrations with:
+You should publish and run the migrations with:
 
 ```bash
 php artisan vendor:publish --tag="webhooks-migrations"
@@ -35,9 +35,32 @@ This file is used to configure which job classes handle which received webhooks
 
 ## Usage
 
+This package simplifies the process of receiving and handling webhooks.
+
+### Saving received webhook to the database
+
+You will need to extend the provided abstract controller `Hellomayaagency\LaravelWebhooks\Http\Controllers\WebhookController` and make a route to your new controller in your routes file.
+
+You can update the `$source` property on the controller to distinguish between webhook sources when you need to accept webhooks from multiple different sources.
+
+There are sensible defaults, but you may want to update `getPayload`, `getRecipientUrl` and `getType` on the controller, as these determine how data is saved from the webhook content.
+
+### Handling the webhook content
+
+When a webhook is received, the controller will attempt to process it. Processing is handled by jobs. To create a job, extend the abstrace `Hellomayaagency\LaravelWebhooks\Jobs\WebhookJob` class and implement it's `handle` function.
+
+You will then need to register that a given job should be used to process a specific received webhook, by specifying it in the config file `laravel-webhooks.php`:
+
 ```php
-$laravelWebhooks = new Hellomayaagency\LaravelWebhooks();
-echo $laravelWebhooks->echoPhrase('Hello, Hellomayaagency!');
+
+    'jobs' => [
+
+        'webhook_source' => [
+            'webhook_type' => '\\App\\Jobs\\HandlerClass',
+        ],
+
+    ],
+
 ```
 
 ## Testing
