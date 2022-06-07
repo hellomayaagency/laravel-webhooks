@@ -4,7 +4,8 @@
     "keywords": [
         "hellomayaagency",
         "laravel",
-        "laravel-webhooks"
+        "laravel-webhooks",
+        "webhooks"
     ],
     "homepage": "https://github.com/hellomayaagency/laravel-webhooks",
     "license": "MIT",
@@ -33,8 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Hellomayaagency\\LaravelWebhooks\\": "src",
-            "Hellomayaagency\\LaravelWebhooks\\Database\\Factories\\": "database/factories"
+            "Hellomayaagency\\LaravelWebhooks\\": "src"
         }
     },
     "autoload-dev": {
