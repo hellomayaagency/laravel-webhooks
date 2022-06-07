@@ -2,7 +2,7 @@
 
 namespace Hellomayaagency\LaravelWebhooks\Jobs;
 
-use App\Models\Webhook;
+use Hellomayaagency\LaravelWebhooks\Models\ReceivedWebhook;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -23,7 +23,7 @@ abstract class WebhookHandler implements ShouldQueue
     /**
      * Webhook to process
      *
-     * @var Webhook
+     * @var ReceivedWebhook
      */
     protected $webhook;
 
@@ -32,7 +32,7 @@ abstract class WebhookHandler implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Webhook $webhook)
+    public function __construct(ReceivedWebhook $webhook)
     {
         $this->webhook = $webhook;
     }
