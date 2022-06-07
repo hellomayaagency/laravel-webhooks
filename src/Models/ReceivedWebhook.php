@@ -46,6 +46,7 @@ class ReceivedWebhook extends Model
 
         if ($this->type === '') {
             $this->saveException(WebhookFailed::missingType($this));
+
             return;
         }
 
@@ -53,11 +54,13 @@ class ReceivedWebhook extends Model
 
         if (is_null($job_class)) {
             $this->saveException(WebhookFailed::typeNotHandled($this));
+
             return;
         }
 
-        if (!class_exists($job_class)) {
+        if (! class_exists($job_class)) {
             $this->saveException(WebhookFailed::jobClassDoesNotExist($job_class, $this));
+
             return;
         }
 
@@ -101,7 +104,7 @@ class ReceivedWebhook extends Model
             implode('.', [
                 'jobs',
                 $this->source,
-                $config_key
+                $config_key,
             ]),
             null
         );

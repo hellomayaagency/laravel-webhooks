@@ -2,7 +2,6 @@
 
 namespace Hellomayaagency\LaravelWebhooks;
 
-use Hellomayaagency\LaravelWebhooks\Commands\LaravelWebhooksCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 

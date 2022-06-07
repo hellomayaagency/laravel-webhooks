@@ -29,7 +29,7 @@ abstract class WebhookController extends Controller
 
         $received_webhook = $model::create([
             'source' => $this->source,
-            'type' =>  $this->getType($payload, $url),
+            'type' => $this->getType($payload, $url),
             'payload' => $payload,
             'url' => $url,
         ]);
@@ -73,7 +73,7 @@ abstract class WebhookController extends Controller
     protected function getSuccessResponse(): JsonResponse
     {
         return Response::json([
-            'message' => 'ok'
+            'message' => 'ok',
         ], 200);
     }
 

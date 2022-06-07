@@ -2,8 +2,6 @@
 
 namespace Hellomayaagency\LaravelWebhooks\Tests;
 
-use Hellomayaagency\LaravelWebhooks\Tests\TestCase;
-
 class ExampleTest extends TestCase
 {
     /** @test */
