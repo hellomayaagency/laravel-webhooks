@@ -102,6 +102,7 @@ class ReceivedWebhook extends Model
 
         return Config::get(
             implode('.', [
+                'laravel-webhooks',
                 'jobs',
                 $this->source,
                 $config_key,
