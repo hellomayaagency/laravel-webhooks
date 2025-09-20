@@ -36,6 +36,26 @@ class ReceivedWebhook extends Model
     protected $guarded = [];
 
     /**
+     * The webhook source.
+     */
+    public ?string $source = null;
+
+    /**
+     * The webhook type.
+     */
+    public ?string $type = null;
+
+    /**
+     * The webhook payload.
+     */
+    public ?array $payload = null;
+
+    /**
+     * The webhook exception.
+     */
+    public ?array $exception = null;
+
+    /**
      * Process this webhook
      *
      * @return void
