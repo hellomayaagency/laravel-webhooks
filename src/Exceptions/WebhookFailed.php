@@ -7,17 +7,17 @@ use Hellomayaagency\LaravelWebhooks\Models\ReceivedWebhook;
 
 class WebhookFailed extends Exception
 {
-    public static function jobClassDoesNotExist(string $job_class, ReceivedWebhook $webhook)
+    public static function jobClassDoesNotExist(string $job_class, ReceivedWebhook $webhook): self
     {
         return new self("Could not process webhook id `{$webhook->id}` of type `{$webhook->type} because the configured jobclass `$job_class` does not exist.");
     }
 
-    public static function typeNotHandled(ReceivedWebhook $webhook)
+    public static function typeNotHandled(ReceivedWebhook $webhook): self
     {
         return new self("Did not process webhook id `{$webhook->id}` of type `{$webhook->type} because there is no configured jobclass.");
     }
 
-    public static function missingType(ReceivedWebhook $webhook)
+    public static function missingType(ReceivedWebhook $webhook): self
     {
         return new self("Webhook call id `{$webhook->id}` did not contain a type. Valid Stripe webhook calls should always contain a type.");
     }
