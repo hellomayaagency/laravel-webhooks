@@ -17,8 +17,7 @@ class WebhookHandlerTest extends TestCase
             'url' => 'https://example.com/webhook',
         ]);
 
-        $handler = new class($webhook) extends TestWebhookHandler
-        {
+        $handler = new class ($webhook) extends TestWebhookHandler {
             public ?array $fullPayload = null;
 
             public function handle(): void
@@ -42,8 +41,7 @@ class WebhookHandlerTest extends TestCase
             'url' => 'https://example.com/webhook',
         ]);
 
-        $handler = new class($webhook) extends TestWebhookHandler
-        {
+        $handler = new class ($webhook) extends TestWebhookHandler {
             public mixed $userId = null;
 
             public mixed $userName = null;
