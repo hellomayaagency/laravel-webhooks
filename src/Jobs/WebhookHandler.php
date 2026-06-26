@@ -51,7 +51,7 @@ abstract class WebhookHandler implements ShouldQueue
      *
      * @return mixed
      */
-    protected function payload(string $fragment = null)
+    protected function payload(?string $fragment = null)
     {
         if (is_null($fragment)) {
             return $this->webhook->payload;

@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Config;
  * config for an array of 'name => value' pairs where the `name` matches the
  * `type` attribute on a webhook and where `value` is the class of a job
  * that will process the contents of that webhook.
+ *
+ * @property string|null $source
+ * @property string|null $type
+ * @property array|null $payload
+ * @property array|null $exception
  */
 class ReceivedWebhook extends Model
 {
@@ -31,29 +36,9 @@ class ReceivedWebhook extends Model
     /**
      * The attributes that aren't mass assignable.
      *
-     * @var string[]|bool
+     * @var array<int, string>
      */
     protected $guarded = [];
-
-    /**
-     * The webhook source.
-     */
-    public ?string $source = null;
-
-    /**
-     * The webhook type.
-     */
-    public ?string $type = null;
-
-    /**
-     * The webhook payload.
-     */
-    public ?array $payload = null;
-
-    /**
-     * The webhook exception.
-     */
-    public ?array $exception = null;
 
     /**
      * Process this webhook

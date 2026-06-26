@@ -3,7 +3,7 @@
 namespace Hellomayaagency\LaravelWebhooks\Tests;
 
 use Hellomayaagency\LaravelWebhooks\LaravelWebhooksServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Bus;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -12,27 +12,25 @@ class TestCase extends Orchestra
     {
         parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            function (string $modelName) {
-                return 'Hellomayaagency\\LaravelWebhooks\\Database\\Factories\\'.class_basename($modelName).'Factory';
-            }
-        );
+        Bus::fake();
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             LaravelWebhooksServiceProvider::class,
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    protected function defineEnvironment($app): void
     {
-        config()->set('database.default', 'testing');
+        $app['config']->set('database.default', 'testing');
+    }
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-webhooks_table.php.stub';
+    protected function defineDatabaseMigrations(): void
+    {
+        $migration = include __DIR__.'/../database/migrations/create_laravel_webhooks_table.php.stub';
+
         $migration->up();
-        */
     }
 }
